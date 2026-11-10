@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#071412" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b1c18'/%3E%3Cpath d='M16 4l3 8 8-3-5 7 6 5-9-1-3 8-3-8-9 1 6-5-5-7 8 3z' fill='%23c8f17b'/%3E%3C/svg%3E" />
+  <title>Сумеречный протокол — изометрическая RPG</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <canvas id="game" aria-label="Изометрическая игра. Перемещайтесь и взаимодействуйте с окружением."></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <header class="topbar">
+      <div class="brand"><div class="brand-mark">✳</div><div><span class="eyebrow">АРХИВ «СЕВЕР» · СЕКТОР 04</span><strong>СУМЕРЕЧНЫЙ <i>ПРОТОКОЛ</i></strong></div></div>
+      <button class="icon-button" id="soundBtn" aria-label="Звук">♫</button>
+    </header>
+    <section class="mission-card" aria-live="polite">
+      <div class="mission-head"><span class="live-dot"></span><span id="missionKicker">ОПЕРАЦИЯ · ТИХИЙ САД</span><span class="mission-step" id="missionStep">01 / 03</span></div>
+      <h1 id="missionTitle">Найдите ядро памяти</h1>
+      <p id="missionText">Оно где-то в глубине оранжереи. Свет снова работает — воспользуйтесь терминалом.</p>
+      <div class="objective-track"><span id="objectiveFill"></span></div>
+    </section>
+    <aside class="status-panel">
+      <div class="status-line"><span>СОСТОЯНИЕ</span><span id="conditionText">В норме</span></div>
+      <div class="meter health"><span>ЗДОРОВЬЕ</span><div><i id="healthFill"></i></div><b id="healthValue">100</b></div>
+      <div class="meter focus"><span>ФОКУС</span><div><i id="focusFill"></i></div><b id="focusValue">3</b></div>
+      <div class="inventory-row"><span>СНАРЯЖЕНИЕ</span><div id="inventory">—</div></div>
+    </aside>
+    <div class="zone-label"><span class="zone-icon">⌖</span><div><b id="zoneName">Оранжерея · Восточное крыло</b><small id="zoneHint">Ночная смена · 02:14</small></div></div>
+    <div class="toast" id="toast" role="status"></div>
+    <div class="interaction" id="interaction" aria-hidden="true">
+      <div class="interaction-top"><div><span class="eyebrow" id="targetType">ОБЪЕКТ</span><h2 id="targetName">Объект</h2></div><button id="closeInteraction" class="close-button" aria-label="Закрыть">×</button></div>
+      <p id="targetDescription"></p><div class="choices" id="choices"></div>
+    </div>
+    <div class="controls-hint" id="controlsHint"><span class="hint-key">WASD</span> или <span class="hint-key">↑↓←→</span> движение <span class="hint-divider">·</span> <span class="hint-key">E</span> взаимодействовать</div>
+    <div class="mobile-controls" aria-label="Игровое управление">
+      <div class="dpad">
+        <button data-dir="up" class="pad up" aria-label="Вверх">⌃</button>
+        <button data-dir="left" class="pad left" aria-label="Влево">‹</button>
+        <button data-dir="down" class="pad down" aria-label="Вниз">⌄</button>
+        <button data-dir="right" class="pad right" aria-label="Вправо">›</button>
+      </div>
+      <button class="act-button" id="actBtn"><span>◎</span><small>ДЕЙСТВИЕ</small></button>
+    </div>
+    <footer class="bottom-note"><span>◈</span> НАЙДИТЕ СВОЙ ПУТЬ. СИСТЕМА НЕ ЗАПОМИНАЕТ ВЫБОР.</footer>
+    <div class="ending" id="ending" aria-hidden="true"><div class="ending-card"><span class="eyebrow">СЕКТОР 04 · ОТЧЁТ ЗАВЕРШЁН</span><h2 id="endingTitle">Тишина сохранена</h2><p id="endingText"></p><div class="ending-stats" id="endingStats"></div><button id="restartBtn" class="choice primary">НАЧАТЬ СНОВА <span>↻</span></button></div></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
